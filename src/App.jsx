@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import  { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Loading from "./components/Loading";
@@ -10,7 +10,7 @@ import ScooterDescription from "./pages/ScooterDescription";
 import About from "./pages/About";
 
 const Contact = lazy(() => import("./pages/Contact"));
-const Marketplace = lazy(() => import("./pages/MarketPlace"));
+const Marketplace = lazy(() => import("./pages/Marketplace"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 const Profile = lazy(() => import("./pages/Profile"));

@@ -7,7 +7,10 @@ import { CLEAR_ERRORS_AUTH, CLEAR_SUCCESS_AUTH, CURRENT_USER, LOGIN_USER_FAIL, L
 export const registerUser = (newUser, navigate) => async (dispatch) => {
   dispatch({ type: REGISTER_USER_LOAD });
   try {
-    const result = await axios.post("/api/auth/register", newUser);
+    const result = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/auth/register`,
+      newUser,
+    );
     dispatch({ type: REGISTER_USER_SUCCESS, payload: result.data });
     navigate("/");
   } catch (error) {
@@ -19,7 +22,10 @@ export const registerUser = (newUser, navigate) => async (dispatch) => {
 export const loginUser = (user, navigate) => async (dispatch) => {
     dispatch({type: LOGIN_USER_LOAD})
     try {
-        const result = await axios.post("/api/auth/login", user)
+        const result = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/auth/login`,
+          user,
+        );
         dispatch({type: LOGIN_USER_SUCCESS, payload: result.data})
         navigate("/")
     } catch (error) {
@@ -50,7 +56,10 @@ export const currentUser = () => async (dispatch) => {
         Authorization: localStorage.getItem("token"),
       },
     };
-    const result = await axios.get("/api/auth/current", config);
+    const result = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/auth/current`,
+      config,
+    );
     dispatch({ type: CURRENT_USER, payload: result.data });
   } catch (error) {
     dispatch({ type: LOGIN_USER_FAIL, payload: error.response.data });

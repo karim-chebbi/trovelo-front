@@ -5,7 +5,9 @@ import { ADD_SCOOTER_ERROR, ADD_SCOOTER_LOADING, ADD_SCOOTER_SUCCESS, CLEAR_ERRO
 export const getAllScooters = () => async (dispatch) => {
   dispatch({ type: GET_SCOOTERS_LOADING });
   try {
-    const result = await axios.get("/api/scooters");
+    const result = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/scooters`,
+    );
     dispatch({ type: GET_SCOOTERS_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_SCOOTERS_ERROR, payload: error.response.data });
@@ -15,7 +17,9 @@ export const getAllScooters = () => async (dispatch) => {
 export const getScooterById = (id) => async (dispatch) => {
   dispatch({ type: GET_SCOOTER_BY_ID_LOADING });
   try {
-    const result = await axios.get(`/api/scooters/${id}`);
+    const result = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/scooters/${id}`,
+    );
     dispatch({ type: GET_SCOOTER_BY_ID_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({
@@ -28,7 +32,10 @@ export const getScooterById = (id) => async (dispatch) => {
 export const addScooter = (newScooter) => async (dispatch) => {
   dispatch({ type: ADD_SCOOTER_LOADING });
   try {
-    const result = await axios.post("/api/scooters", newScooter);
+    const result = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/scooters`,
+      newScooter,
+    );
     dispatch({ type: ADD_SCOOTER_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: ADD_SCOOTER_ERROR, payload: error.response.data });
@@ -38,7 +45,9 @@ export const addScooter = (newScooter) => async (dispatch) => {
 export const deleteScooter = (id) => async (dispatch) => {
   dispatch({ type: DELETE_SCOOTER_LOADING });
   try {
-    const result = await axios.delete(`/api/scooters/${id}`);
+    const result = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/scooters/${id}`,
+    );
     dispatch({ type: DELETE_SCOOTER_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: DELETE_SCOOTER_ERROR, payload: error.response.data });
@@ -48,7 +57,10 @@ export const deleteScooter = (id) => async (dispatch) => {
 export const editScooter = (id, newData) => async (dispatch) => {
   dispatch({ type: EDIT_SCOOTER_LOADING });
   try {
-    const result = await axios.patch(`/api/scooters/${id}`, newData);
+    const result = await axios.patch(
+      `${import.meta.env.VITE_API_URL}/api/scooters/${id}`,
+      newData,
+    );
     dispatch({ type: EDIT_SCOOTER_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: EDIT_SCOOTER_ERROR, payload: error.response.data });

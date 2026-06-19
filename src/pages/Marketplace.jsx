@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Zap } from "lucide-react";
 import { getAllScooters } from "../JS/Actions/scooterActions";
@@ -10,7 +10,7 @@ const Marketplace = () => {
   const scooters = useSelector((state) => state.ScooterReducer.scooters);
   useEffect(() => {
     dispatch(getAllScooters());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="bg-ice/30 min-h-screen">
